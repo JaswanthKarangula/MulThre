@@ -121,6 +121,11 @@ public class Posts {
         }
     }
 
+    void getPostData(Connection con){
+
+
+    }
+
     public void setPostId() {
         System.out.println("Enter POst id ");
         Scanner sc =new Scanner(System.in);

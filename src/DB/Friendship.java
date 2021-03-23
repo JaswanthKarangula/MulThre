@@ -8,10 +8,11 @@ public class Friendship {
     private User user2;
 
     Friendship(){
-
     }
 
     void setUsers(){
+        user1=new User();
+        user2 =new User();
         System.out.println("Enter details for first user");
         user1.setUserId();
         System.out.println("Enter details fro second user ");
@@ -27,7 +28,6 @@ public class Friendship {
             st.setInt(1, id1);
             st.setInt(2, id2);
             st.executeUpdate();
-
     }
 
     void removeFriend(Connection con ) throws Exception{

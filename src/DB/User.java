@@ -36,8 +36,9 @@ public class User {
     }
 
      void readFromUser(Connection con) throws Exception{
-        String query = "select * from users1";
-        Statement stmt = con.createStatement();
+        String query = "select * from users1 where id =?";
+        PreparedStatement stmt = con.prepareStatement(query);
+        stmt.setInt(1,id);
         ResultSet rs = stmt.executeQuery(query);
 
         while (rs.next()) {

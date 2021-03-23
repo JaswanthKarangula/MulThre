@@ -32,6 +32,10 @@ public class Interaction {
         post_id=post.getPost_id();
     }
 
+    public Interaction() {
+
+    }
+
     void setPostForInteraction(){
         post=new Posts();
         post.setPostId();
