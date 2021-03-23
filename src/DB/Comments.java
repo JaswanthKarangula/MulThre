@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class Comments {
-    Interaction interaction;
+    private Interaction interaction;
 
     void getALLCommentsForPost(Connection con) throws Exception{
         String query ="select c.comment_data from comment as c where c.interaction_id in (select interaction_id from interaction as i where i.post_id=?);";

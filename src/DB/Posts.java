@@ -4,19 +4,19 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class Posts {
-     int user_id;
-     int post_id;
-     User user;
+     private int user_id;
+     private int post_id;
+     private User user;
 
     Posts(User user){
         this.user=user;
-        this.user_id=user.id;
+        this.user_id=user.getUserId();
     }
 
     Posts(User user,int post_id){
         this.user=user;
         this.post_id=post_id;
-        this.user_id=user.id;
+        this.user_id=user.getUserId();
 
     }
 
@@ -130,8 +130,10 @@ public class Posts {
     public void setUserForPost(){
         user=new User();
         user.setUserId();
-        user_id=user.id;
+        user_id=user.getUserId();
     }
 
-
+    public int getPost_id() {
+        return post_id;
+    }
 }

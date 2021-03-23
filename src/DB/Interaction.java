@@ -6,17 +6,17 @@ import java.util.Scanner;
 
 public class Interaction {
 
-    Posts post;
-    User user;
-    int post_id;
-    int user_id;
-    int interaction_id;
+    private Posts post;
+    private User user;
+    private int post_id;
+    private int user_id;
+    private int interaction_id;
 
     Interaction(Posts post,User user){
         this.post=post;
         this.user=user;
-        user_id=user.id;
-        post_id=post.post_id;
+        user_id=user.getUserId();
+        post_id=post.getPost_id();
     }
 
     Interaction(int interaction_id){
@@ -28,8 +28,8 @@ public class Interaction {
         this.post=post;
         this.user=user;
         this.interaction_id=interaction_id;
-        user_id=user.id;
-        post_id=post.post_id;
+        user_id=user.getUserId();
+        post_id=post.getPost_id();
     }
 
     void setPostForInteraction(){
@@ -40,7 +40,10 @@ public class Interaction {
     void setInteractingUser(){
         user= new User();
         user.setUserId();
-        user_id=user.id;
+        user_id=user.getUserId();
+    }
+    int getInteractionId(){
+        return interaction_id;
     }
 
     private String getComment(){

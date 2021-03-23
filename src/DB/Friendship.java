@@ -4,8 +4,8 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class Friendship {
-    User user1;
-    User user2;
+    private User user1;
+    private User user2;
 
     Friendship(){
 
@@ -22,8 +22,8 @@ public class Friendship {
         String query ="INSERT INTO friendship ( p1_id, p2_id) VALUES (?,?)";
         PreparedStatement st = con.prepareStatement(query);
         Scanner sc = new Scanner(System.in);
-            int id1 = user1.id;
-            int id2 = user2.id;
+            int id1 = user1.getUserId();
+            int id2 = user2.getUserId();
             st.setInt(1, id1);
             st.setInt(2, id2);
             st.executeUpdate();

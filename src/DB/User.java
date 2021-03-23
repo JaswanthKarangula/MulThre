@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class User {
 
-    int id;
+    private int id;
 
     User(){
     }
@@ -90,6 +90,10 @@ public class User {
         Scanner sc = new Scanner(System.in);
         id=sc.nextInt();
 
+    }
+
+    public int  getUserId(){
+        return id;
     }
 
 
