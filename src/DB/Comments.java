@@ -3,8 +3,8 @@ package DB;
 import java.sql.*;
 import java.util.Scanner;
 
-public class Comments {
-    private Interaction interaction;
+public class Comments  {
+
 
     void getALLCommentsForPost(Connection con) throws Exception{
         String query ="select c.comment_data from comment as c where c.interaction_id in (select interaction_id from interaction as i where i.post_id=?);";

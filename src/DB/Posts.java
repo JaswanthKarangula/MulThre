@@ -17,7 +17,6 @@ public class Posts {
         this.user=user;
         this.post_id=post_id;
         this.user_id=user.getUserId();
-
     }
 
     Posts() {
@@ -36,7 +35,6 @@ public class Posts {
             st.setInt(1, user_id);
             st.setString(2, pname);
             st.executeUpdate();
-
     }
 
     void updatePostName(Connection con) throws Exception{
@@ -141,4 +139,8 @@ public class Posts {
     public int getPost_id() {
         return post_id;
     }
+
 }
+
+
+//MVC
