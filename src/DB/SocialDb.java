@@ -202,50 +202,27 @@ public class SocialDb {
         Scanner sc = new Scanner(System.in);
         int offset=0;
         int limit=sc.nextInt();
-        String query ="select * from Post as p where p.person_id in (select p1_id from friendship where p2_id= ? union select p2_id from friendship where p1_id= ?)  order by post_timestaamp desc limit ?,? ;";
+        String query ="select * from Post as p where p.person_id in (select p1_id from friendship where p2_id= ? union select p2_id from friendship where p1_id= ?) and post_timestaamp< ? order by post_timestaamp desc limit ?,? ;";
         PreparedStatement st = con.prepareStatement(query);
         System.out.println("Enter id of person  ");
         int id1 = sc.nextInt();
         ResultSet rs;
 
-        Timestamp lastTime=new Timestamp(System.currentTimeMillis());
+        Timestamp currentTimestamp=new Timestamp(System.currentTimeMillis());
 
         while(true) {
             System.out.println("The posts ids     person id        postname    are ");
             st.setInt(1, id1);
             st.setInt(2, id1);
-            st.setInt(3,offset);
-            st.setInt(4,limit);
-
-            int count=limit;
+            st.setTimestamp(3,currentTimestamp);
+            st.setInt(4,offset);
+            st.setInt(5,limit);
             rs= st.executeQuery();
-            while(count!=0) {
-                count=0;
-                while (rs.next()) {
-                    Timestamp curr = rs.getTimestamp(6);
-                    if (curr.compareTo(lastTime) >=  0) {
-
-                       // System.out.println("time stamp of current record " +curr);
-                        count++;
-                    }
-//                    int post_id =rs.getInt(2);
-//                    System.out.println("postid is itr   "+post_id);
-                }
-                // System.out.println("count  " +count);
-                offset += (count);
-                st.setInt(1, id1);
-                st.setInt(2, id1);
-                st.setInt(3,offset);
-                st.setInt(4,limit);
-                rs= st.executeQuery();
-            }
-
             while(rs.next()){
                     int post_id =rs.getInt(2);
                     int person_id =rs.getInt(1);
                     String post_name=rs.getString(3);
                     System.out.println(post_id+"      "+person_id+"     "+post_name);
-                lastTime = rs.getTimestamp(6);
 
             }
 
